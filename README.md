@@ -25,5 +25,9 @@ docker compose up --build
  - https://www.jetbrains.com/help/idea/docker-compose.html#create-docker-compose-run-configuration
 
 
+https://www.tensorflow.org/lite/tutorials?hl=pt-br
+https://github.com/tensorflow/examples/tree/master/lite/examples/object_detection/raspberry_pi
+
+
 
 https://www.axurethemes.com/free-axure-tools
