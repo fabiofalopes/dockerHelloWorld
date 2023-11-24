@@ -1,0 +1,37 @@
+version: '3'
+services:
+  db:
+    image: mysql
+    #command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+        MYSQL_ROOT_PASSWORD: password
+        MYSQL_DATABASE: test
+        MYSQL_USER: user
+        MYSQL_PASSWORD: password
+    volumes:
+        - db_data:/var/lib/mysql
+
+  adminer:
+      image: adminer
+      restart: always
+      ports:
+        - 8080:8080
+
+  app:
+    build: .
+    volumes:
+      - ./src:/usr/src/app
+    ports:
+      - "8081:8080"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_USER=user
+      - DATABASE_PASSWORD=password
+      - DATABASE_NAME=test
+    restart: always
+
+volumes:
+  db_data:
